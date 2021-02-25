@@ -1,0 +1,29 @@
+{
+  "name": "www-vps",
+  "version": "1.0.0",
+  "description": "Express application for vps site",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx ts-node ./src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Catamondium/www-vps.git"
+  },
+  "author": "LSZ Birtles",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/Catamondium/www-vps/issues"
+  },
+  "homepage": "https://github.com/Catamondium/www-vps#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.2"
+  }
+}
