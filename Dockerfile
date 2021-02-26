@@ -7,7 +7,7 @@ COPY "package*.json" ./
 FROM base as test
 RUN npm ci
 COPY . .
-CMD ["npm", "test"]
+RUN ["npm", "test"]
 
 FROM base as prod
 ENV NODE_ENV=production
