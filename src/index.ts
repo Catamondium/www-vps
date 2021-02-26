@@ -1,6 +1,9 @@
 import express = require("express");
+import helmet = require("helmet");
 import { env } from "process";
-const app = express()
+
+const app = express();
+app.use(helmet());
 
 app.get('/', (req, res) => {
     res.redirect("https://github.com/Catamondium/");
