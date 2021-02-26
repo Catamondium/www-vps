@@ -4,11 +4,10 @@ FROM node:12.19.0 as base
 WORKDIR /app
 COPY "package*.json" ./
 
-#TODO
-#FROM base as test
-#RUN npm ci
-#COPY . .
-#CMD ["npm", "test"]
+FROM base as test
+RUN npm ci
+COPY . .
+CMD ["npm", "test"]
 
 FROM base as prod
 ENV NODE_ENV=production
