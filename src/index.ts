@@ -2,6 +2,8 @@ import express = require("express");
 import helmet = require("helmet");
 import { env } from "process";
 
+const PORT = env.PORT;
+
 const app = express();
 app.use(helmet());
 
@@ -13,6 +15,6 @@ app.get('/hello', (req, res) => {
     res.send("Hello world");
 });
 
-app.listen(env.PORT, () => {
-    console.log(`Active on localhost:${env.PORT}`);
+app.listen(PORT, () => {
+    console.log(`Active on localhost:${PORT}`);
 });
