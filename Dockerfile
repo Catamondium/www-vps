@@ -16,5 +16,5 @@ RUN npm ci --production
 COPY --chown=node . .
 USER node
 EXPOSE ${PORT}
-HEALTHCHECK CMD curl 127.0.0.1:${PORT}/
+HEALTHCHECK CMD curl --fail 127.0.0.1:${PORT} || exit 1
 CMD ["npm", "start"]
