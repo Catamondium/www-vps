@@ -15,6 +15,10 @@ app.get('/hello', (req, res) => {
     res.send("Hello world");
 });
 
+app.use((req, res) => {
+    res.status(404).send({url: req.originalUrl + ' not found'});
+})
+
 app.listen(PORT, () => {
     console.log(`Active on localhost:${PORT}`);
 });
