@@ -1,4 +1,4 @@
-FROM node:12.19.0 as base
+FROM node:alpine as base
 
 WORKDIR /app
 COPY "package*.json" ./
@@ -6,15 +6,14 @@ COPY "package*.json" ./
 FROM base as test
 RUN npm ci
 COPY . .
-RUN ["npm", "test"]
+RUN ["npm", "run", "test"]
 
 FROM base as prod
-
-ENV PORT 3000
+ENV PORT=3000
 ENV NODE_ENV=production
 RUN npm ci --production
 COPY --chown=node . .
 USER node
 EXPOSE ${PORT}
 HEALTHCHECK CMD curl --fail 127.0.0.1:${PORT} || exit 1
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]

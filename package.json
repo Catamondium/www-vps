@@ -4,7 +4,7 @@
   "description": "Express application for vps site",
   "main": "index.js",
   "scripts": {
-    "debug": "PORT=3000 nodemon",
+    "dev": "nodemon",
     "start": "npx ts-node ./src/index.ts",
     "test": "npx ts-mocha tsconfig.json ./tests/**/*.spec.ts"
   },
