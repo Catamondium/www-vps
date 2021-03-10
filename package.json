@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "start": "npx ts-node ./src/index.ts",
+    "prod": "npx ts-node --transpile-only ./src/index.ts",
     "test": "npx ts-mocha tsconfig.json ./tests/**/*.spec.ts"
   },
   "repository": {

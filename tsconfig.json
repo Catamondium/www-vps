@@ -1,9 +1,6 @@
 {
-    "ts-node": {
-      "transpileOnly": true
-    },
     "compilerOptions": {
-        "typeRoots" : ["./node_modules/@types", "./typings"]
+        "typeRoots" : ["./node_modules/@types"]
       },
-      "exclude":["src/testing/**/*.spec.ts"]
+      "exclude":["tests/**/*.spec.ts"]
 }

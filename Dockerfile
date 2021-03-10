@@ -16,4 +16,5 @@ COPY --chown=node . .
 USER node
 EXPOSE ${PORT}
 HEALTHCHECK CMD curl --fail 127.0.0.1:${PORT} || exit 1
-CMD ["npm", "run", "start"]
+# run w/o typechecking
+ENTRYPOINT ["npm", "run", "prod"]

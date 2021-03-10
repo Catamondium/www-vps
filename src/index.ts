@@ -1,6 +1,8 @@
 import * as express from "express";
 import * as helmet from "helmet";
-import { www } from "./www";
+import * as path from "path";
+import { api } from "./api";
+
 
 import { env } from "process";
 const PORT = env.PORT;
@@ -9,8 +11,11 @@ const PORT = env.PORT;
 const app = express();
 app.use(helmet());
 
+// static front
+app.use(express.static(path.join(__dirname, "../public")));
+
 // routing modules
-app.use(www);
+app.use('/api', api);
 
 // Catchall 404
 app.use((req, res) => {
