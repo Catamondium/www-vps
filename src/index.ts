@@ -3,13 +3,12 @@ import * as helmet from "helmet";
 import * as path from "path";
 import { api } from "./api";
 
-
 import { env } from "process";
 const PORT = env.PORT || 3000;
-const ISPROD = env.NODE_ENV === 'production';
 
 // boilerplate & middleware
 const app = express();
+const ISPROD = app.locals.settings.env === 'production';
 app.use(helmet());
 
 // routing modules
@@ -26,10 +25,6 @@ app.use((req, res) => {
         res.status(404).send(`Not Found: ${req.originalUrl}`);
     }
 });
-
-if(!ISPROD) {
-    app.locals.pretty = true;
-}
 
 app.listen(PORT, () => {
     console.log(`Listening 0.0.0.0:${PORT} '${env.NODE_ENV}'`);

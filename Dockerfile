@@ -1,7 +1,7 @@
 FROM node:alpine as base
 
 WORKDIR /app
-COPY "package*.json" ./
+COPY "package*.json" ./ "tsconfig.json" ./
 
 FROM base as test
 RUN npm ci
