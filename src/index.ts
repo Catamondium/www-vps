@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as helmet from "helmet";
 import * as path from "path";
-import { api } from "./api";
+import api from "./api";
 
 import { env } from "process";
 const PORT = env.PORT || 3000;
