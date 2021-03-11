@@ -5,23 +5,32 @@ import { api } from "./api";
 
 
 import { env } from "process";
-const PORT = env.PORT;
+const PORT = env.PORT || 3000;
+const ISPROD = env.NODE_ENV === 'production';
 
-// boilerplate & protection
+// boilerplate & middleware
 const app = express();
 app.use(helmet());
-
-// static front
-app.use(express.static(path.join(__dirname, "../public")));
 
 // routing modules
 app.use('/api', api);
 
+// static front
+app.use(express.static(path.join(__dirname, "../public")));
+
 // Catchall 404
 app.use((req, res) => {
-    res.status(404).send(`Not found: ${req.originalUrl}`);
-})
+    if (ISPROD) {
+        res.sendStatus(404);
+    } else {
+        res.status(404).send(`Not Found: ${req.originalUrl}`);
+    }
+});
+
+if(!ISPROD) {
+    app.locals.pretty = true;
+}
 
 app.listen(PORT, () => {
-    console.log(`Listening 0.0.0.0:${PORT}`);
+    console.log(`Listening 0.0.0.0:${PORT} '${env.NODE_ENV}'`);
 });
