@@ -3,7 +3,8 @@ This is the source for my personal virtual private server. Bits and pieces may b
 # package.json scripts
 All scripts operate after npm install.
 
-For general testing, dev, test and start should suffice and automatically download their dependencies
+For general testing, dev, test and start should suffice and automatically download their dependencies.
+
 dev: live testing in nodemon.
 start: run the server w/o compilation.
 test: mocha+chai unit testing
@@ -13,5 +14,6 @@ The following scripts are primarily intended to be called by Docker, outside of 
 build: compile typescript
 prod: run production server, predicated on having run build
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDE4MDQzNDZdfQ==
+eyJoaXN0b3J5IjpbLTE3OTQ2NTY3ODgsLTIwMDE4MDQzNDZdfQ
+==
 -->
