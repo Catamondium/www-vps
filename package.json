@@ -7,7 +7,6 @@
     "dev": "npx nodemon --delay 500ms ./src/index.ts",
     "start": "npx ts-node ./src/index.ts",
     "test": "npx ts-mocha tsconfig.json ./tests/**/*.spec.ts",
-
     "build": "./node_modules/typescript/bin/tsc -p .",
     "prod": "node ./dist/index.js"
   },
@@ -32,7 +31,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "helmet": "^4.4.1",
-    "ts-node": "^9.1.1",
     "typescript": "^4.2.2"
   }
 }
