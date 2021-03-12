@@ -5,15 +5,15 @@ All scripts operate after npm install.
 
 For general testing, dev, test and start should suffice and automatically download their dependencies.
 
-dev: live testing in nodemon.
-start: run the server w/o compilation.
-test: mocha+chai unit testing
+* dev: live testing in nodemon.
+* start: run the server w/o compilation.
+* test: mocha+chai unit testing
 
 The following scripts are primarily intended to be called by Docker, outside of docker they aren't required to get a server running.
 
-build: compile typescript
-prod: run production server, predicated on having run build
+* build: compile typescript
+* prod: run production server, predicated on having run build
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTQ2NTY3ODgsLTIwMDE4MDQzNDZdfQ
-==
+eyJoaXN0b3J5IjpbMjE5Njc4MjQyLC0xNzk0NjU2Nzg4LC0yMD
+AxODA0MzQ2XX0=
 -->
