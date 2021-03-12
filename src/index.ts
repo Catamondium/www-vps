@@ -27,5 +27,5 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Listening 0.0.0.0:${PORT} '${env.NODE_ENV}'`);
+    console.log(`Listening 0.0.0.0:${PORT} '${app.locals.settings.env}'`);
 });
