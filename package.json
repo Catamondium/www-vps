@@ -4,7 +4,7 @@
   "description": "Express application for vps site",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon --delay 500ms ./src/index.ts",
+    "dev": "npx nodemon --delay 1s ./src/index.ts",
     "start": "npx ts-node ./src/index.ts",
     "test": "npx ts-mocha tsconfig.json ./tests/**/*.spec.ts",
     "build": "./node_modules/typescript/bin/tsc -p .",

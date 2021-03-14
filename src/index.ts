@@ -2,6 +2,7 @@ import * as express from "express";
 import * as helmet from "helmet";
 import * as path from "path";
 import api from "./api";
+import viewer from "./viewer";
 
 import { env } from "process";
 const PORT = env.PORT || 3000;
@@ -13,7 +14,7 @@ app.set("view engine", "ejs");
 const ISPROD = app.locals.settings.env === 'production';
 
 app.locals.world = {
-    title: "EJS test page",//FILL domain name
+    title: undefined,//FILL domain name
     map: [ // GEN from views/pages?
         {name: "Home", link: "/"},
         {name: "About", link: "/about"},
@@ -28,19 +29,12 @@ app.locals.world = {
 
 app.use(helmet());
 
-// Namspaced routes
+// Namespaced routes
 app.use('/api', api);
 
 // General routes
 app.use(express.static(path.join(__dirname, "../public")));
-
-app.get("/", (req, res) => {
-    res.render("pages/index");
-});
-
-app.get("/about", (req, res) => {
-    res.render("pages/about");
-});
+app.use(viewer);
 
 // Catchall 404
 app.use((req, res) => {
