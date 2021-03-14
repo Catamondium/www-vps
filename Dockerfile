@@ -4,13 +4,14 @@ COPY "package*.json" ./ "tsconfig.json" ./
 
 FROM base AS build
 # Seperately prepare production modules
-RUN npm set progress=false && npm config set depth 0
-RUN npm install --only=production
+RUN npm set progress=false && \
+    npm config set depth 0 && \
+    npm install --only=production
 RUN cp -R node_modules prod_node_modules
 # Dev depends & compile
 COPY ./src ./src
-RUN npm install
-RUN npm run build
+RUN npm install \
+    npm run build
 
 FROM build AS test
 COPY . .
@@ -26,10 +27,11 @@ COPY --from=build --chown=9000 \
 COPY --from=build --chown=9000 \
     /build/dist ./dist/
 # Copy over static resources
+COPY --chown=9000 ./views ./views
 COPY --chown=9000 ./public ./public
-COPY --chown=9000 ./package*.json ./
+
 USER 9000
 EXPOSE ${PORT}
 HEALTHCHECK CMD curl --fail 127.0.0.1:${PORT} || exit 1
 # run w/o typechecking
-ENTRYPOINT ["npm", "run", "prod"]
+ENTRYPOINT ["node", "./dist/index.js"]

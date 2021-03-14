@@ -1,0 +1,19 @@
+<nav class="primary-navigation">
+  <a class="navbar-brand" href="/"><%- world.title %></a>
+  <ul class="navbar-nav mr-auto">
+  <% world.map.forEach(function(item) { %>
+    <% if (item.children == undefined) { %>
+      <li>
+        <a href= <%- item.link %> ><%- item.name %></a>
+      </li>
+    <% }  else { %>
+      <li><%- item.name _%><ul class="dropdown">
+          <% item.children.forEach(function(subitem) { %>
+            <li><a href= <%- subitem.link %> ><%- subitem.name %></a></li>
+          <% }); %>
+          </ul>
+      </li>
+      <% }; }); %>
+      </ul>
+  </ul>
+</nav>
