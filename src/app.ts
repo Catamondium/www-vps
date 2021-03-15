@@ -15,7 +15,6 @@ const ISPROD = app.locals.settings.env === 'production';
 // META
 app.locals.prodstate = ISPROD;
 app.locals.world = {
-    title: undefined,//FILL domain name
     map: [ // GEN from views/pages?
         {name: "Home", link: "/"},
         {name: "About", link: "/about"},

@@ -19,8 +19,9 @@ const replacer = (_match, first, rest) => {
 
 viewer.use((req, res, next) => {
     // readable guard, avoids 500s
+    const rpath = path.join(__dirname, "../../views/pages/", req.url) + ".ejs";
     access(
-        path.join(__dirname, "../../pages/", req.url),
+        rpath,
         constants.R_OK,
         (err) => {
             if (err) {
