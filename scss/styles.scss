@@ -1,4 +1,10 @@
 nav {
+  .navbar-brand {
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
+
   &.primary-navigation {
     margin: 0 auto;
     display: block;
@@ -62,17 +68,17 @@ nav {
       text-align: left;
       margin-bottom: 20px;
       border-style: none;
-    }
 
-    ul li ul li a:hover {
-      padding-left: 10px;
-      border-left: 2px solid #3ca0e7;
-      transition: all 0.3s ease;
+      a:hover {
+        padding-left: 10px;
+        border-left: 2px solid #3ca0e7;
+        transition: all 0.3s ease;
+      }
     }
   }
 }
 
-a {
+:any-link {
   text-decoration: none;
 
   &:hover {

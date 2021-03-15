@@ -4,12 +4,12 @@ import { env } from "process";
 import * as path from "path";
 
 const viewer = express.Router();
-viewer.use((req, res, next) => {
+viewer.use((req, _res, next) => {
     req.app.locals.world.title ||= env.HNAME || req.get("host");
     next();
 });
 
-viewer.get("/", (req, res) => {
+viewer.get("/", (_req, res) => {
     res.render("pages/index", {title: `Home`});
 });
 
@@ -19,7 +19,7 @@ const replacer = (_match, first, rest) => {
 
 viewer.use((req, res, next) => {
     // readable guard, avoids 500s
-    const rpath = path.join(__dirname, "../../views/pages/", req.url) + ".ejs";
+    const rpath = path.join(req.app.locals.srcdir, "../views/pages/", req.url) + ".ejs";
     access(
         rpath,
         constants.R_OK,
@@ -28,7 +28,7 @@ viewer.use((req, res, next) => {
                 next('router');
             } else {
                 let title = req.url.replace(/.*\/(.)(.*)$/, replacer);
-                res.render("pages" + req.url, {title: title});
+                res.render(rpath, {title: title});
             }
         });
 });

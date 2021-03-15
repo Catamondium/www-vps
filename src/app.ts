@@ -9,16 +9,21 @@ const PORT = env.PORT || 3000;
 
 // boilerplate & middleware
 const app = express();
+app.use(helmet());
 app.set("view engine", "ejs");
 const ISPROD = app.locals.settings.env === 'production';
 
 // META
+app.locals.srcdir = __dirname;
 app.locals.prodstate = ISPROD;
 app.locals.world = {
     map: [ // GEN from views/pages?
         {name: "Home", link: "/"},
         {name: "About", link: "/about"},
-        {name: "DDown", children: [
+        { 
+            name: "Blog",
+            link: "#",
+            children: [
             {name: '1', link: '#'},
             {name: '2', link: '#'},
             {name: '3', link: '#'}
@@ -26,8 +31,6 @@ app.locals.world = {
     ],
     foot_text: "Be gay, do code<br>Powered by Express & EJS"
 };
-
-app.use(helmet());
 
 // Namespaced routes
 app.use('/api', api);
