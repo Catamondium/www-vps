@@ -80,6 +80,22 @@ a {
   }
 }
 
+main {
+  display: flex;
+  text-align: left;
+  justify-content: center;
+}
+
+.text-muted {
+  color: gray;
+}
+
+.text-center {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
 ul li ul li a {
   transition: all 0.5s ease;
 }
