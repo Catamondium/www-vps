@@ -10,7 +10,7 @@ RUN npm set progress=false && \
 RUN cp -R node_modules prod_node_modules
 # Dev depends & compile
 COPY ./src ./src
-RUN npm install \
+RUN npm install &&\
     npm run build
 
 FROM build AS test
