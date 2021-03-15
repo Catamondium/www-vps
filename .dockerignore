@@ -4,3 +4,4 @@ npm-debug.log
 nodemon.json
 *.md
 dist
+public/css

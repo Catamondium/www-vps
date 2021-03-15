@@ -10,7 +10,9 @@ RUN npm set progress=false && \
 RUN cp -R node_modules prod_node_modules
 # Dev depends & compile
 COPY ./src ./src
+COPY ./scss ./scss
 RUN npm install &&\
+    npm run scss &&\
     npm run build
 
 FROM build AS test
@@ -24,6 +26,8 @@ ENV NODE_ENV=production
 # forward build & prod depends
 COPY --from=build --chown=9000 \
     /build/prod_node_modules ./node_modules/
+COPY --from=build --chown=9000 \
+    /build/public/css ./public/css
 COPY --from=build --chown=9000 \
     /build/dist ./dist/
 # Copy over static resources

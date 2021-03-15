@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon --delay 1s ./src/index.ts",
-    "start": "npx ts-node ./src/index.ts",
+    "start": "npm run scss && npx ts-node ./src/index.ts",
     "test": "npx ts-mocha tsconfig.json ./tests/**/*.spec.ts",
+    "scss": "npx node-sass scss -o public/css",
     "build": "./node_modules/typescript/bin/tsc -p .",
     "prod": "node ./dist/index.js"
   },
