@@ -4,11 +4,12 @@
   "description": "Express application for vps site",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon --delay 1s ./src/app.ts",
-    "start": "npm run scss && npx ts-node ./src/app.ts",
+    "dev": "npm run scss --watch ./scss && npx nodemon --delay 1s ./src/app.ts",
+    "start": "npx ts-node ./src/app.ts",
     "test": "npx ts-mocha tsconfig.json ./tests/**/*.spec.ts",
     "scss": "npx node-sass scss -o public/css",
     "build": "./node_modules/typescript/bin/tsc -p .",
+    "healthcheck": "node ./dist/health.js",
     "prod": "node ./dist/app.js"
   },
   "repository": {
@@ -27,6 +28,7 @@
     "@types/express": "^4.17.11",
     "@types/mocha": "^8.2.1",
     "@types/node": "^14.14.34",
+    "@types/node-fetch": "^2.5.8",
     "chai": "^4.3.0",
     "mocha": "^8.3.2",
     "ts-mocha": "^8.0.0",
@@ -35,6 +37,7 @@
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "helmet": "^4.4.1"
+    "helmet": "^4.4.1",
+    "node-fetch": "^2.6.1"
   }
 }

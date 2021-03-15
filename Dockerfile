@@ -11,8 +11,8 @@ RUN cp -R node_modules prod_node_modules
 # Dev depends & compile
 COPY ./src ./src
 COPY ./scss ./scss
-RUN npm install &&\
-    npm run scss &&\
+RUN npm install && \
+    npm run scss && \
     npm run build
 
 FROM build AS test
@@ -33,9 +33,10 @@ COPY --from=build --chown=9000 \
 # Copy over static resources
 COPY --chown=9000 ./views ./views
 COPY --chown=9000 ./public ./public
+COPY --chown=9000 ./package.json ./
 
 USER 9000
 EXPOSE ${PORT}
-HEALTHCHECK CMD curl --fail 127.0.0.1:${PORT} || exit 1
+HEALTHCHECK CMD npm run healthcheck
 # run w/o typechecking
-ENTRYPOINT ["node", "./dist/app.js"]
+ENTRYPOINT ["npm", "run", "prod"]
