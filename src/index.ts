@@ -7,12 +7,13 @@ import viewer from "./viewer";
 import { env } from "process";
 const PORT = env.PORT || 3000;
 
-
 // boilerplate & middleware
 const app = express();
 app.set("view engine", "ejs");
 const ISPROD = app.locals.settings.env === 'production';
 
+// META
+app.locals.prodstate = ISPROD;
 app.locals.world = {
     title: undefined,//FILL domain name
     map: [ // GEN from views/pages?
@@ -25,7 +26,7 @@ app.locals.world = {
         ]}
     ],
     foot_text: "Be gay, do code<br>Powered by Express & EJS"
-}
+};
 
 app.use(helmet());
 
@@ -46,5 +47,5 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Listening 0.0.0.0:${PORT} '${app.locals.settings.env}'`);
+    console.log(`Listening on port ${PORT} in '${app.locals.settings.env}'`);
 });
