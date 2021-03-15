@@ -1,10 +1,11 @@
 import * as express from "express";
 import { access, constants } from "fs";
+import { env } from "process";
 import * as path from "path";
 
 const viewer = express.Router();
 viewer.use((req, res, next) => {
-    req.app.locals.world.title ||= req.get("host");
+    req.app.locals.world.title ||= env.HNAME || req.get("host");
     next();
 });
 

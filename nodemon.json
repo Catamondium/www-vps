@@ -1,6 +1,6 @@
 {
-    "watch": ["src/**/*.ts", "scss/**/*.scss","./**/*.json"],
+    "watch": ["src/**/*.ts", "./**/*.json"],
     "ignore": ["src/**/*.spec.ts"],
-    "ext": "scss, json,ts",
+    "ext": "json,ts",
     "exec": "npm start"
 }
