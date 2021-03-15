@@ -38,4 +38,4 @@ USER 9000
 EXPOSE ${PORT}
 HEALTHCHECK CMD curl --fail 127.0.0.1:${PORT} || exit 1
 # run w/o typechecking
-ENTRYPOINT ["node", "./dist/index.js"]
+ENTRYPOINT ["npm", "run", "prod"]
